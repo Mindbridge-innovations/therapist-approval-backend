@@ -4,7 +4,3 @@ We welcome contributions from the community to improve the Therapist Approval Ba
 
 
 
-ion
-- Other unethical or unprofessional conduct
-
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and 
