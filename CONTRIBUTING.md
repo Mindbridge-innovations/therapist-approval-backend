@@ -1,6 +1,6 @@
 # Contributing to Therapist Approval Backend
 
-We welcome contributions from the community 
+We welcome contributions from 
 
 
 
