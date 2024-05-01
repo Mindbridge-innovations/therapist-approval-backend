@@ -1,6 +1,4 @@
-# Contributing to Therapist Approval Backend
-
-We 
+# Contributing to Therapist Approval 
 
 
 
