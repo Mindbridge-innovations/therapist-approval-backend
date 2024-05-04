@@ -1,4 +1,4 @@
-# Contributing to Therapist Approval 
+# Contributing to Therapist Appro
 
 
 
