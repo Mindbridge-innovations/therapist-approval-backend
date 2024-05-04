@@ -1,4 +1,4 @@
-# Contributing to Therapist Appro
+# Contributing to Therapist 
 
 
 
