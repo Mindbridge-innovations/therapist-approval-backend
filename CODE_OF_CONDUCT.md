@@ -18,4 +18,3 @@ Project maintainers have the right and responsibility to remove, edit, or reject
 This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/), version 2.1 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md), available at [https://www.contributor-covenant.org/version/2/1/code_of_conduct.html](https://www.contributor-covenant.org/version/2/1/code_of_conduct.html).
 
 For concerns or inquiries regarding this Code of Conduct, please contact [glorrysibomana758@gmail.com](glorrysibomana758@gmail.com).
-
