@@ -1,6 +1,6 @@
 # Code of Conduct
 
-As contributors and maintainers of the Contacts Backend project, we pledge to respect all people who contribute through reporting issues, posting feature requests, updating documentation, submitting pull requests, and any other activities.
+As contributors and maintainers of the Therapist Approval Backend project, we pledge to respect all people who contribute through reporting issues, posting feature requests, updating documentation, submitting pull requests, and any other activities.
 
 We are committed to making participation in this project a harassment-free experience for everyone, regardless of level of experience, gender, gender identity and expression, sexual orientation, disability, personal appearance, body size, race, ethnicity, age, religion, or nationality.
 
