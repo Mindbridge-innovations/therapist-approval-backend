@@ -1,6 +1,6 @@
 // utils/credentialUpload.js
 const { getStorage } = require('firebase-admin/storage');
-const { db } = require('./firebaseConfig');
+const { db } = require('../config/firebaseConfig');
 
 const uploadCredentials = async (userId, fileData) => {
   const storage = getStorage();

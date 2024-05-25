@@ -5,6 +5,8 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 const uploadCredential = async (req, res) => {
   try {
+    console.log('Request Body:', req.body);
+    console.log('File received:', req.file);
     const userId = req.user.userId; // Assuming the user ID is attached to the request by authentication middleware
     const fileData = {
       fileBuffer: req.file.buffer,

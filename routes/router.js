@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const { login } = require('../controllers/loginController');
+const { authenticateToken } = require('../middleware/authenticateToken');
 const { uploadCredential, upload } = require('../controllers/credentialController');
 
 // Login route
