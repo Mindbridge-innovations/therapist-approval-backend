@@ -1,13 +1,15 @@
 // controllers/credentialController.js
 const { uploadCredentials } = require('../utils/credentialUpload');
+const { sendCredentialSubmissionEmail } = require('../utils/sendCredentialSubmissionEmail');
 const multer = require('multer');
 const upload = multer({ storage: multer.memoryStorage() });
 
 const uploadCredential = async (req, res) => {
   try {
-    console.log('Request Body:', req.body);
-    console.log('File received:', req.file);
-    const userId = req.user.userId; // Assuming the user ID is attached to the request by authentication middleware
+    const userId = req.user.userId;
+    const userFirstName = req.user.firstName;
+    const userEmail = req.user.email;
+
     const fileData = {
       fileBuffer: req.file.buffer,
       fileName: req.file.originalname,
@@ -15,6 +17,8 @@ const uploadCredential = async (req, res) => {
     };
 
     const result = await uploadCredentials(userId, fileData);
+    await sendCredentialSubmissionEmail(userEmail, userFirstName);
+    
     res.status(201).json(result);
   } catch (error) {
     console.error(`Error uploading credentials: ${error.message}`);
