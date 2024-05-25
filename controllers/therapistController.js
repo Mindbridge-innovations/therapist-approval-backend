@@ -1,42 +1,44 @@
 // controllers/therapistController.js
 const { db } = require('../config/firebaseConfig');
 
-const getTherapistDetails = async (req, res) => {
+const getAllTherapists = async (req, res) => {
   try {
-    const userId = req.params.userId;
-    const userRef = db.ref(`users/${userId}`);
-    const userSnapshot = await userRef.once('value');
-    const userData = userSnapshot.val();
+    const usersRef = db.ref('users');
+    const snapshot = await usersRef.once('value');
+    const users = snapshot.val();
+    const therapists = [];
 
-    if (!userData || userData.role !== 'therapist') {
-      return res.status(404).json({ message: 'Therapist not found' });
+    for (const userId in users) {
+      const user = users[userId];
+      if (user.role === 'therapist') {
+        // Fetch credentials for each therapist
+        const credentialsRef = db.ref('credentials').orderByChild('userId').equalTo(userId);
+        const credentialsSnapshot = await credentialsRef.once('value');
+        const credentialsData = credentialsSnapshot.val();
+        let fileUrl = null;
+
+        if (credentialsData) {
+          const credentialKey = Object.keys(credentialsData)[0];
+          fileUrl = credentialsData[credentialKey].fileUrl;
+        }
+
+        therapists.push({
+          userId: userId,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          email: user.email,
+          phoneNumber: user.phoneNumber,
+          isApproved: user.isApproved,
+          fileUrl: fileUrl
+        });
+      }
     }
 
-    const credentialsRef = db.ref(`credentials`).orderByChild('userId').equalTo(userId);
-    const credentialsSnapshot = await credentialsRef.once('value');
-    const credentialsData = credentialsSnapshot.val();
-
-    let fileUrl = null;
-    if (credentialsData) {
-      // Assuming each user has only one credential file
-      const credentialKey = Object.keys(credentialsData)[0];
-      fileUrl = credentialsData[credentialKey].fileUrl;
-    }
-
-    const response = {
-      firstName: userData.firstName,
-      lastName: userData.lastName,
-      email: userData.email,
-      phoneNumber: userData.phoneNumber,
-      isApproved: userData.isApproved,
-      fileUrl: fileUrl
-    };
-
-    res.json(response);
+    res.json(therapists);
   } catch (error) {
-    console.error(`Error fetching therapist details: ${error.message}`);
+    console.error(`Error fetching therapists: ${error.message}`);
     res.status(500).json({ message: error.message });
   }
 };
 
-module.exports = { getTherapistDetails };
+module.exports = { getAllTherapists };
