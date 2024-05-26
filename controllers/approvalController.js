@@ -1,7 +1,7 @@
 // controllers/approvalController.js
 const { db } = require('../config/firebaseConfig');
 const { updateTherapistApprovalStatus } = require('../utils/approvalUtils');
-const { sendApprovalStatusEmail } = require('../utils/sendApprovalStatusEmail');
+const sendApprovalStatusEmail  = require('../utils/sendApprovalStatusEmail');
 
 const updateTherapistApproval = async (req, res) => {
   const { userId } = req.params;
