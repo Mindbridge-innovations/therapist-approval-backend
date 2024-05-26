@@ -7,6 +7,7 @@ const { uploadCredential, upload } = require('../controllers/credentialControlle
 const { getAllTherapists } = require('../controllers/therapistController');
 const { updateTherapistApproval } = require('../controllers/approvalController');
 const { checkAdmin } = require('../middleware/checkAdmin');
+const { getUserInfo } = require('../controllers/userController');
 
 // Login route
 router.post('/login', login);
@@ -19,6 +20,9 @@ router.get('/therapists',authenticateToken,checkAdmin,getAllTherapists);
 
 // Route to update therapist approval status
 router.post('/therapist-approval/:userId', authenticateToken, checkAdmin, updateTherapistApproval);
+
+// Route to get user info
+router.get('/user-info', authenticateToken, getUserInfo);
 
 
 module.exports = router;
