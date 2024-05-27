@@ -1,4 +1,3 @@
-// utils/sendApprovalStatusEmail.js
 const sendEmail = require('./mailer');
 
 const sendApprovalStatusEmail = async (email, firstName, approved, reason) => {
@@ -8,7 +7,12 @@ const sendApprovalStatusEmail = async (email, firstName, approved, reason) => {
       name: firstName,
       intro: `Your application has been ${approvalWord}.`,
       action: {
-        instructions: `Reason: ${reason}`
+        instructions: `Reason: ${reason}`,
+        button: {
+          color: approved ? '#22BC66' : '#FF6347', // Green for approved, red for rejected
+          text: approved ? 'Approved' : 'Rejected',
+          link: '#' // Adjust the link as necessary
+        }
       },
       outro: "If you have any questions or require further information, please do not hesitate to contact us."
     }
