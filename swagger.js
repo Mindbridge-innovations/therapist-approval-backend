@@ -6,13 +6,13 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDefinition = {
   openapi: '3.0.0',
   info: {
-    title: 'CENTE-CONTACTS API',
+    title: 'THERAPIST-APPROVAL API',
     version: '1.0.0',
-    description: 'This is the cente contacts backend API documentation made with Express and documented with Swagger',
+    description: 'This is the therapist approval backend API documentation made with Express and documented with Swagger',
   },
   servers: [
     {
-        url: 'https://contacts-backend-production-32eb.up.railway.app/api',
+        url: 'https://therapist-approval-backend-production.up.railway.app/api',
         description: 'Production server',
       },
     {

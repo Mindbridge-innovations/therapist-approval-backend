@@ -4,6 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const router = require('./routes/router');
+const { swaggerSpec, swaggerUi } = require('./swagger');
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -15,6 +16,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Define your routes here
 app.use('/api', router);
+
+// Serve Swagger docs at /docs
+app.use('/therapist-approval-api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Custom 404 handler must be after all other app.use() and routes calls
 app.use((req, res, next) => {
