@@ -19,7 +19,8 @@ const getAllTherapists = async (req, res) => {
 
         if (credentialsData) {
           const credentialKey = Object.keys(credentialsData)[0];
-          fileUrl = credentialsData[credentialKey].fileUrl;
+          const fileHash = credentialsData[credentialKey].fileHash;
+          fileUrl = `${process.env.PINATA_RESTRICTED_ACCESS_GATEWAY_URL}/ipfs/${fileHash}?pinataGatewayToken=${process.env.PINATA_GATEWAY_KEY}`;
         }
 
         therapists.push({
